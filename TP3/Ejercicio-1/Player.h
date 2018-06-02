@@ -8,7 +8,7 @@ class Player : public Object {
 	float _speed;
 	void movement(Movement direction, float elapsed);
 public:
-	Player(float x, float y, const char* imagePath);
+	Player(int x, int y, const char* imagePath);
 	~Player();
 	void update(float elapsed);
 };

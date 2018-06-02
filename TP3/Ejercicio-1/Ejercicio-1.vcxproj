@@ -137,12 +137,17 @@ copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-5.1.dll" "$(Ou
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ejer-1.cpp" />
+    <ClCompile Include="GameplayState.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="State.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="GameplayState.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

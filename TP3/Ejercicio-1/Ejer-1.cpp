@@ -1,48 +1,60 @@
+#include <iostream>
 #include "allegro5/allegro.h"
 #include "allegro5/allegro_image.h"
-#include "allegro5/allegro_native_dialog.h"
+#include <allegro5\allegro_image.h>
+#include <allegro5\allegro_font.h>
+#include <allegro5\allegro_ttf.h>
+//#include "Button.h"
+#include "GameplayState.h"
+
+using namespace std;
 
 int main(int argc, char **argv) {
+	ALLEGRO_DISPLAY *display;
+	GameplayState* game;
 
-	ALLEGRO_DISPLAY *display = NULL;
-	ALLEGRO_BITMAP  *image = NULL;
-
-	if (!al_init()) {
-		al_show_native_message_box(display, "Error", "Error", "Failed to initialize allegro!",
-			NULL, ALLEGRO_MESSAGEBOX_ERROR);
-		return 0;
-	}
-
-	if (!al_init_image_addon()) {
-		al_show_native_message_box(display, "Error", "Error", "Failed to initialize al_init_image_addon!",
-			NULL, ALLEGRO_MESSAGEBOX_ERROR);
-		return 0;
+	if (!al_init())
+	{
+		cerr << "Error initializing Allegro." << endl;
+		return 1;
 	}
 
 	display = al_create_display(800, 600);
-
-	if (!display) {
-		al_show_native_message_box(display, "Error", "Error", "Failed to initialize display!",
-			NULL, ALLEGRO_MESSAGEBOX_ERROR);
-		return 0;
+	if (!display)
+	{
+		cerr << "Error creating display." << endl;
+		return 1;
 	}
 
-	image = al_load_bitmap("image.jpg");
-
-	if (!image) {
-		al_show_native_message_box(display, "Error", "Error", "Failed to load image!",
-			NULL, ALLEGRO_MESSAGEBOX_ERROR);
-		al_destroy_display(display);
-		return 0;
+	if (!al_install_keyboard())
+	{
+		cerr << "Error installing keyboard." << endl;
+		return 1;
 	}
 
-	al_draw_bitmap(image, 200, 200, 0);
+	if (!al_init_image_addon())
+	{
+		cerr << "Error initializing Allegro Image." << endl;
+		return 1;
+	}
 
-	al_flip_display();
-	al_rest(2);
+	if (!al_init_font_addon())
+	{
+		cerr << "Error initializing Allegro Font." << endl;
+		return 1;
+	}
+
+	if (!al_init_ttf_addon())
+	{
+		cerr << "Error initializing Allegro TTF." << endl;
+		return 1;
+	}
+	
+	game = new GameplayState(display);
+	game->runGame();
 
 	al_destroy_display(display);
-	al_destroy_bitmap(image);
+	al_uninstall_keyboard();
 
 	return 0;
 }

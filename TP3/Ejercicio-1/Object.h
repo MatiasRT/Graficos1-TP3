@@ -6,13 +6,13 @@
 class Object {
 protected:
 	ALLEGRO_BITMAP * _image;
-	float _x;
-	float _y;
+	int _x;
+	int _y;
 public:
-	Object(float x, float y, const char* imagePath);
+	Object(int x, int y, const char* imagePath);
 	~Object();
-	float getX();
-	float getY();
+	int getX();
+	int getY();
 	ALLEGRO_BITMAP* getImage();
 };
 #endif
