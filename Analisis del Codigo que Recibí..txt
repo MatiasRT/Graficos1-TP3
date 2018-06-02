@@ -1,0 +1,9 @@
+-Solamente esta incluida la libreria y sus dependencias.
+
+-La libreria y sus dependencias estaban mal incluidas, ya que traia todas las dll y no separaba las del modo Debug y Release.
+
+-El codigo en si no funciona, pero si lo hiciera, solo mostrar una imagen estatica sin movimiento.
+
+-El proyecto no estaba bien configurado:
+	.Se traian todos los archivos de la carpeta bin en los eventos posteriores a la compilacion.
+	.La consola no estaba configurada para quue en el modo Debug se muestre y en Release no.
