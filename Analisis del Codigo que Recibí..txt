@@ -6,4 +6,5 @@
 
 -El proyecto no estaba bien configurado:
 	.Se traian todos los archivos de la carpeta bin en los eventos posteriores a la compilacion.
+
 	.La consola no estaba configurada para quue en el modo Debug se muestre y en Release no.
