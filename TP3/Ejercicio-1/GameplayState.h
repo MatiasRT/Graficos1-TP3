@@ -1,5 +1,7 @@
 #ifndef GAMEPLAYSTATE_H
 #define GAMEPLAYSTATE_H
+#include <allegro5\allegro_font.h>
+#include <allegro5\allegro_ttf.h>
 #include "State.h"
 #include "Player.h"
 #include "Airplane.h"

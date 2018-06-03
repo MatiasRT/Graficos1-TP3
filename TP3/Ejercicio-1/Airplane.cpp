@@ -37,3 +37,6 @@ void Airplane::respawn() {
 void Airplane::disable() {
 	_enable = false;
 }
+bool Airplane::isEnable() { 
+	return _enable; 
+}

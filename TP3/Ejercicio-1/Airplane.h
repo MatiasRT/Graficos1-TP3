@@ -11,7 +11,6 @@ public:
 	void update(float elapsed);
 	void respawn();
 	void disable();
-	inline bool isEnable() {return _enable;}
+	bool isEnable();
 };
 #endif
-

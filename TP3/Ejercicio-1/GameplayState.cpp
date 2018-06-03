@@ -3,10 +3,17 @@
 #define MAX_X 630
 #define MIN_X 20
 #define PLANES 10
+ALLEGRO_FONT* font;
+
 
 GameplayState::GameplayState(ALLEGRO_DISPLAY* display) : State(display) {
+
 	srand(time(0));
 	_background = al_load_bitmap("Assets/Background.png");
+
+	al_init_ttf_addon();
+	font = al_load_font("Assets/StarWarsFont.ttf", 27, NULL);
+
 	_player = new Player(300, 625, "Assets/Xwing.png");
 	for (int i = 0; i < PLANES; i++) {
 		_airplane[i] = new Airplane(rand() % (MAX_X - 64 - MIN_X + 1) + MIN_X, MAX_Y, "Assets/Enemy.png");
@@ -58,7 +65,9 @@ void GameplayState::draw() {
 				al_draw_bitmap(_airplane[i]->getImage(), _airplane[i]->getX(), _airplane[i]->getY(), false);
 			}
 		}
+		al_draw_textf(font, al_map_rgb(255, 255, 255), 310, 700, ALLEGRO_ALIGN_CENTRE, "Lives: %d", _player->getLife());
 		al_flip_display();
+		al_clear_to_color(al_map_rgb(0, 0, 0));
 	}
 }
 void GameplayState::runGame() {
