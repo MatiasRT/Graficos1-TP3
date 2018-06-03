@@ -136,6 +136,7 @@ copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-5.1.dll" "$(Ou
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Airplane.cpp" />
     <ClCompile Include="Ejer-1.cpp" />
     <ClCompile Include="GameplayState.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -143,6 +144,7 @@ copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-5.1.dll" "$(Ou
     <ClCompile Include="State.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Airplane.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="GameplayState.h" />
     <ClInclude Include="Object.h" />

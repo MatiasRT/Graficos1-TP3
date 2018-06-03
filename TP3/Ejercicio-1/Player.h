@@ -5,7 +5,8 @@ enum Movement {
 	Up, Down, Left, Right
 };
 class Player : public Object {
-	float _speed;
+	float _speedx;
+	float _speedy;
 	void movement(Movement direction, float elapsed);
 public:
 	Player(int x, int y, const char* imagePath);

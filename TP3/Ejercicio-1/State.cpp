@@ -1,7 +1,8 @@
 #include "State.h"
+#define FRAME 1.0/60
 State::State(ALLEGRO_DISPLAY* display){
 	_display = display;
-	_timer = al_create_timer(1.0 / 60);
+	_timer = al_create_timer(FRAME);
 	_queue = al_create_event_queue();
 	_draw = true;
 	_timeAtLastFrame = 0;

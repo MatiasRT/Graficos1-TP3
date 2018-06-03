@@ -1,8 +1,11 @@
 #include "Player.h"
 #include <iostream>
+#define SPEEDX 300
+#define SPEEDY 150
 using namespace std;
 Player::Player(int x, int y, const char* imagePath) : Object(x, y, imagePath) {
-	_speed = 300;
+	_speedx = SPEEDX;
+	_speedy = SPEEDY;
 }
 Player::~Player(){
 
@@ -24,19 +27,19 @@ void Player::movement(Movement direction, float elapsed) {
 	switch (direction){
 		case Up:
 			if (_y > 12)
-				_y -= _speed * elapsed;
+				_y -= _speedy * elapsed;
 			break;
 		case Down:
-			if (_y + 64 < 536)
-				_y += _speed * elapsed;
+			if (_y + 64 < 700)
+				_y += _speedy * elapsed;
 			break;
 		case Left:
 			if (_x > 2) 
-				_x -= _speed * elapsed;
+				_x -= _speedx * elapsed;
 			break;
 		case Right:
-			if (_x + 64 < 798)
-				_x += _speed * elapsed;
+			if (_x + 64 < 648)
+				_x += _speedx * elapsed;
 			break;
 	}
 }

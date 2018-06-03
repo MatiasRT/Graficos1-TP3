@@ -6,6 +6,8 @@
 #include <allegro5\allegro_ttf.h>
 //#include "Button.h"
 #include "GameplayState.h"
+#define WIDTH 650
+#define HEIGHT 750
 
 using namespace std;
 
@@ -19,7 +21,7 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	display = al_create_display(800, 600);
+	display = al_create_display(WIDTH, HEIGHT);
 	if (!display)
 	{
 		cerr << "Error creating display." << endl;
