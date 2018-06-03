@@ -9,7 +9,7 @@ GameplayState::GameplayState(ALLEGRO_DISPLAY* display) : State(display) {
 	_background = al_load_bitmap("Assets/Background.png");
 	_player = new Player(300, 625, "Assets/Xwing.png");
 	for (int i = 0; i < PLANES; i++) {
-		_airplane[i] = new Airplane(rand() % (MAX_X - 32 - MIN_X + 1) + MIN_X, MAX_Y, "Assets/Enemy.png");
+		_airplane[i] = new Airplane(rand() % (MAX_X - 64 - MIN_X + 1) + MIN_X, MAX_Y, "Assets/Enemy.png");
 	}
 	_gameOver = false;
 	
@@ -42,6 +42,9 @@ void GameplayState::update() {
 	_player->update(elapsed);
 	for (int i = 0; i < PLANES; i++) {
 		_airplane[i]->update(elapsed);
+		if (_airplane[i]->isEnable() && collide(_player, _airplane[i])) {
+			enemyCollide(_player, _airplane[i]);
+		}
 	}
 }
 void GameplayState::draw() {
@@ -64,4 +67,18 @@ void GameplayState::runGame() {
 		update();
 		draw();
 	}
+}
+bool GameplayState::collide(Object* O1, Object* O2) {
+	if (O1->getX() < O2->getX() + 64 && O1->getX() + 64 > O2->getX()  &&
+		O1->getY() < O2->getY() + 64 && O1->getY() + 64 > O2->getY() ) {
+		return true;
+	}
+	else
+		return false;
+}
+void GameplayState::enemyCollide(Player* P1, Airplane* E1) {
+	P1->death();
+	E1->disable();
+	if (P1->getLife() == 0)
+		_gameOver = true;
 }

@@ -11,8 +11,8 @@ Airplane::Airplane(int x, int y, const char* imagePath):Object(x,y,imagePath){
 	_timer = rand() % (MAXTIME - MINTIME + 1) + MINTIME;
 	_enable = false;
 }
-Airplane::~Airplane()
-{
+Airplane::~Airplane(){
+
 }
 void Airplane::update(float elapsed) {
 	if (_enable) {
@@ -32,7 +32,7 @@ void Airplane::respawn() {
 	_speed = rand() % (MAXSPEED - MINSPEED + 1) + MINSPEED;
 	_timer = rand() % (MAXTIME - MINTIME + 1) + MINTIME;
 	_y = MAX_Y;
-	_x = rand() % (MAX_X - 32 - MIN_X + 1) + MIN_X;
+	_x = rand() % (MAX_X - 64 - MIN_X + 1) + MIN_X;
 }
 void Airplane::disable() {
 	_enable = false;

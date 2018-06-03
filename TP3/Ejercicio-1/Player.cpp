@@ -2,10 +2,12 @@
 #include <iostream>
 #define SPEEDX 300
 #define SPEEDY 150
+#define LIFE 3
 using namespace std;
 Player::Player(int x, int y, const char* imagePath) : Object(x, y, imagePath) {
 	_speedx = SPEEDX;
 	_speedy = SPEEDY;
+	_life = LIFE;
 }
 Player::~Player(){
 
@@ -42,4 +44,17 @@ void Player::movement(Movement direction, float elapsed) {
 				_x += _speedx * elapsed;
 			break;
 	}
+}
+int Player::getLife() {
+	return _life;
+}
+void Player::death() {
+	_life--;
+	if (_life > 0) {
+		respawn();
+	}
+}
+void Player::respawn() {
+	_x = 300;
+	_y = 625;
 }

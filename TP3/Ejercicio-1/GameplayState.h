@@ -13,6 +13,8 @@ protected:
 	void input();
 	void update();
 	void draw();
+	void enemyCollide(Player* P1, Airplane* E1);
+	bool collide(Object* O1, Object* O2);
 public:
 	GameplayState(ALLEGRO_DISPLAY* display);
 	~GameplayState();
