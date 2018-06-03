@@ -1,11 +1,11 @@
 #include "Airplane.h"
-#define MAXSPEED 300
+#define MAXSPEED 250
 #define MINSPEED 150
-#define MAXTIME 3
+#define MAXTIME 4
 #define MINTIME 1
-#define MAXY 0
-#define MAXX 630
-#define MINX 20
+#define MAX_Y 0
+#define MAX_X 630
+#define MIN_X 20
 Airplane::Airplane(int x, int y, const char* imagePath):Object(x,y,imagePath){
 	_speed = rand()%(MAXSPEED - MINSPEED + 1) + MINSPEED;
 	_timer = rand() % (MAXTIME - MINTIME + 1) + MINTIME;
@@ -16,7 +16,7 @@ Airplane::~Airplane()
 }
 void Airplane::update(float elapsed) {
 	if (_enable) {
-		if (_y < 650)
+		if (_y < 645)
 			_y += _speed * elapsed;
 		else
 			_enable = false;
@@ -29,10 +29,10 @@ void Airplane::update(float elapsed) {
 }
 void Airplane::respawn() {
 	_enable = true;
-	_speed = rand() % (300 - 150 + 1) + 150;
-	_timer = rand() % (3 - 1 + 1) + 1;
-	_y = MAXY;
-	_x = rand() % (MAXX - 32 - MINX + 1) + MINX;
+	_speed = rand() % (MAXSPEED - MINSPEED + 1) + MINSPEED;
+	_timer = rand() % (MAXTIME - MINTIME + 1) + MINTIME;
+	_y = MAX_Y;
+	_x = rand() % (MAX_X - 32 - MIN_X + 1) + MIN_X;
 }
 void Airplane::disable() {
 	_enable = false;

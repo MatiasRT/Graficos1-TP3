@@ -1,16 +1,18 @@
 #include "GameplayState.h"
-#define MAXY 0
-#define MAXX 630
-#define MINX 20
+#define MAX_Y 0
+#define MAX_X 630
+#define MIN_X 20
 #define PLANES 10
 
 GameplayState::GameplayState(ALLEGRO_DISPLAY* display) : State(display) {
 	srand(time(0));
-	_player = new Player(300, 625, "Assets/Player.png");
+	_background = al_load_bitmap("Assets/Background.png");
+	_player = new Player(300, 625, "Assets/Xwing.png");
 	for (int i = 0; i < PLANES; i++) {
-		_airplane[i] = new Airplane(rand() % (MAXX - 32 - MINX + 1) + MINX, MAXY, "Assets/Enemy.png");
+		_airplane[i] = new Airplane(rand() % (MAX_X - 32 - MIN_X + 1) + MIN_X, MAX_Y, "Assets/Enemy.png");
 	}
 	_gameOver = false;
+	
 }
 GameplayState::~GameplayState(){
 	if (_player)
@@ -45,8 +47,8 @@ void GameplayState::update() {
 void GameplayState::draw() {
 	if (_draw)
 	{
+		al_draw_bitmap(_background, 0, 0, 0);
 		_draw = false;
-		al_clear_to_color(al_map_rgba(0, 0, 0, 0));
 		al_draw_bitmap(_player->getImage(), _player->getX(), _player->getY(), false);
 		for (int i = 0; i < PLANES; i++) {
 			if (_airplane[i]->isEnable()) {

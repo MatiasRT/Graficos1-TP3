@@ -2,6 +2,7 @@
 #define FRAME 1.0/60
 State::State(ALLEGRO_DISPLAY* display){
 	_display = display;
+	_background = NULL;
 	_timer = al_create_timer(FRAME);
 	_queue = al_create_event_queue();
 	_draw = true;
@@ -14,4 +15,5 @@ State::State(ALLEGRO_DISPLAY* display){
 State::~State(){
 	al_destroy_event_queue(_queue);
 	al_destroy_timer(_timer);
+	al_destroy_bitmap(_background);
 }

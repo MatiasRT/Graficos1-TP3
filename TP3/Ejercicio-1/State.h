@@ -3,7 +3,8 @@
 #include <allegro5\allegro.h>
 class State {
 protected:
-	ALLEGRO_DISPLAY * _display;
+	ALLEGRO_DISPLAY* _display;
+	ALLEGRO_BITMAP* _background;
 	ALLEGRO_TIMER* _timer;
 	ALLEGRO_EVENT_QUEUE* _queue;
 	bool _draw;

@@ -13,6 +13,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
 	ALLEGRO_DISPLAY *display;
+	
 	GameplayState* game;
 
 	if (!al_init())
