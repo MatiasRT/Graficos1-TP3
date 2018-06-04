@@ -9,14 +9,14 @@ ALLEGRO_FONT* font;
 GameplayState::GameplayState(ALLEGRO_DISPLAY* display) : State(display) {
 
 	srand(time(0));
-	_background = al_load_bitmap("Assets/Background.png");
+	_background = al_load_bitmap("Background.png");
 
 	al_init_ttf_addon();
-	font = al_load_font("Assets/StarWarsFont.ttf", 27, NULL);
+	font = al_load_font("StarWarsFont.ttf", 27, NULL);
 
-	_player = new Player(300, 625, "Assets/Xwing.png");
+	_player = new Player(300, 625, "Xwing.png");
 	for (int i = 0; i < PLANES; i++) {
-		_airplane[i] = new Airplane(rand() % (MAX_X - 64 - MIN_X + 1) + MIN_X, MAX_Y, "Assets/Enemy.png");
+		_airplane[i] = new Airplane(rand() % (MAX_X - 64 - MIN_X + 1) + MIN_X, MAX_Y, "Enemy.png");
 	}
 	_gameOver = false;
 	

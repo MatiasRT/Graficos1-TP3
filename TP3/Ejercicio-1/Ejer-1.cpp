@@ -58,8 +58,8 @@ int main(int argc, char **argv) {
 	}	
 	
 	
-	_background1 = al_load_bitmap("Assets/Menu1.png");
-	_background2 = al_load_bitmap("Assets/Menu2.png");
+	_background1 = al_load_bitmap("Menu1.png");
+	_background2 = al_load_bitmap("Menu2.png");
 
 
 	while (!gameStart) {
