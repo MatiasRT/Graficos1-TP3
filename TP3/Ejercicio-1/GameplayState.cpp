@@ -2,7 +2,7 @@
 #define MAX_Y 0
 #define MAX_X 630
 #define MIN_X 20
-#define PLANES 10
+#define PLANES 6
 ALLEGRO_FONT* font;
 
 
@@ -15,6 +15,8 @@ GameplayState::GameplayState(ALLEGRO_DISPLAY* display) : State(display) {
 	font = al_load_font("StarWarsFont.ttf", 27, NULL);
 
 	_player = new Player(300, 625, "Xwing.png");
+	_bullet = new Bullet(-100,-100, "Bullet.png");
+
 	for (int i = 0; i < PLANES; i++) {
 		_airplane[i] = new Airplane(rand() % (MAX_X - 64 - MIN_X + 1) + MIN_X, MAX_Y, "Enemy.png");
 	}
@@ -41,16 +43,26 @@ void GameplayState::input() {
 			case ALLEGRO_EVENT_DISPLAY_CLOSE:
 				_gameOver = true;
 				break;
+			case ALLEGRO_EVENT_KEY_UP:
+				if (event.keyboard.keycode == ALLEGRO_KEY_SPACE && !_bullet->isEnable()) {
+					_bullet->enable();
+					_bullet->reset(_player->getX() + 27, _player->getY());
+				}
+
 		}
 }
 void GameplayState::update() {
 	float elapsed = al_get_time() - _timeAtLastFrame;
 	_timeAtLastFrame = al_get_time();
 	_player->update(elapsed);
+	_bullet->update(elapsed);
 	for (int i = 0; i < PLANES; i++) {
 		_airplane[i]->update(elapsed);
 		if (_airplane[i]->isEnable() && collide(_player, _airplane[i])) {
 			enemyCollide(_player, _airplane[i]);
+		}
+		if (_airplane[i]->isEnable() && collide(_bullet, _airplane[i])) {
+			bulletCollide(_bullet, _airplane[i]);
 		}
 	}
 }
@@ -60,6 +72,8 @@ void GameplayState::draw() {
 		al_draw_bitmap(_background, 0, 0, 0);
 		_draw = false;
 		al_draw_bitmap(_player->getImage(), _player->getX(), _player->getY(), false);
+		al_draw_bitmap(_bullet->getImage(), _bullet->getX(), _bullet->getY(), false);
+
 		for (int i = 0; i < PLANES; i++) {
 			if (_airplane[i]->isEnable()) {
 				al_draw_bitmap(_airplane[i]->getImage(), _airplane[i]->getX(), _airplane[i]->getY(), false);
@@ -90,4 +104,8 @@ void GameplayState::enemyCollide(Player* P1, Airplane* E1) {
 	E1->disable();
 	if (P1->getLife() == 0)
 		_gameOver = true;
+}
+void GameplayState::bulletCollide(Bullet* B1, Airplane* E1) {
+	B1->reset(-100, -100);
+	E1->disable();
 }

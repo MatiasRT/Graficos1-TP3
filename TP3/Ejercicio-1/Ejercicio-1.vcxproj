@@ -102,7 +102,8 @@ copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro-debug-5.1.dll" "$(O
 copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_image-debug-5.1.dll" "$(OutDir)"
 copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_main-debug-5.1.dll" "$(OutDir)"
 copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_audio-debug-5.1.dll" "$(OutDir)"
-copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-debug-5.1.dll" "$(OutDir)"</Command>
+copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-debug-5.1.dll" "$(OutDir)"
+xcopy "$(SolutionDir)Ejercicio-1\Assets" "$(OutDir)/Assets" /e /i</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -134,7 +135,8 @@ copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro-5.1.dll" "$(OutDir)
 copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_image-5.1.dll" "$(OutDir)"
 copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_main-5.1.dll" "$(OutDir)"
 copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_audio-5.1.dll" "$(OutDir)"
-copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-5.1.dll" "$(OutDir)"</Command>
+copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-5.1.dll" "$(OutDir)"
+xcopy "$(SolutionDir)Ejercicio-1\Assets" "$(OutDir)/Assets" /e /i</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,6 +154,7 @@ copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-5.1.dll" "$(Ou
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Airplane.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Ejer-1.cpp" />
     <ClCompile Include="GameplayState.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -160,6 +163,7 @@ copy "$(SolutionDir)Resources\allegro_5.1.12_x86\bin\allegro_font-5.1.dll" "$(Ou
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Airplane.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="GameplayState.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
